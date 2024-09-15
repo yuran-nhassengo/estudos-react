@@ -6,11 +6,11 @@ function App() {
 
 
   return (
-    <>
+    <div className="App">
      Just React
 
      <EnrolmentForm/>
-    </>
+    </div>
   )
 }
 
