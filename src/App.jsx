@@ -1,5 +1,6 @@
 
 import './App.css'
+import EnrolmentForm from './components/EnrolmentForm'
 
 function App() {
 
@@ -7,6 +8,8 @@ function App() {
   return (
     <>
      Just React
+
+     <EnrolmentForm/>
     </>
   )
 }
