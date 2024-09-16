@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './EnrolmentForm.css'
 
-const EnrolmentForm = () => {
+const EnrolmentForm = (props) => {
 
     const [firstName,setFirstName] = useState("")
     const [lastName,setLastName] = useState("")
@@ -9,13 +9,14 @@ const EnrolmentForm = () => {
 
     const handleSubmit = (event) => {
         setMessage(`Welcome ${firstName} ${lastName}`);
+        props.setUpdatedSeats(props.currentSeats-1);
         event.preventDefault();
     }
 
   return (
     <div>
-      <form className="enrolForm">
-        <h1>Student Details</h1>
+      <form className="enrolForm" onClick={handleSubmit} >
+        <h1>{props.selectedProgram}Student Details</h1>
         <div>
             <label htmlFor="firstName">First Name:</label>
             <input type="text" onBlur ={(event) =>
@@ -29,7 +30,7 @@ const EnrolmentForm = () => {
             }/>
         </div>
         <div>
-            <input type="submit" value="Submit" onClick={handleSubmit} />
+            <input type="submit" value="Submit" />
         </div>
         <div>
             <label htmlFor="message" className="message">{message}</label>
