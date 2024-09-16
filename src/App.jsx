@@ -6,20 +6,27 @@ import EnrolmentForm from './components/EnrolmentForm'
 function App() {
 
   const [program,setProgram] = useState("UG");
-  const [seats,setSeats] = useState(100);
+  const [Useats,setUSeats] = useState(70);
+  const [Pseats,setPSeats] = useState(45);
 
   const handleChange = (event) =>{
     setProgram(event.target.value);
   };
 
   const setUpdatedSeats = (updatedSeats) => {
-        setSeats(updatedSeats);
+        if(program == "UG") {
+            setUSeats(updatedSeats);
+        }else{
+          setPSeats(updatedSeats);
+        }
+       
   };
 
   return (
     <div className="App">
      <div className="programs">
-      <label>Remaining Setas - {seats}</label>
+      <div><label>Remaining UG Setas - {Useats}</label></div>
+      <div><label>Remaining PG Setas - {Pseats}</label></div>
       <br/>
       <br/>
       <label >Choose Program:</label>
@@ -36,7 +43,7 @@ function App() {
      <EnrolmentForm
         chosenProgram ={program}
         setUpdatedSeats={setUpdatedSeats}
-        currentSeats={seats}
+        currentSeats={program === "UG" ? Useats : Pseats}
      />
     </div>
   )
