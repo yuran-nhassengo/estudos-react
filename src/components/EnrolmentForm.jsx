@@ -16,7 +16,7 @@ const EnrolmentForm = (props) => {
   return (
     <div>
       <form className="enrolForm" onClick={handleSubmit} >
-        <h1>{props.selectedProgram}Student Details</h1>
+        <h1> {props.chosenProgram} Student Details</h1>
         <div>
             <label htmlFor="firstName">First Name:</label>
             <input type="text" onBlur ={(event) =>
