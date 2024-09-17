@@ -10,8 +10,6 @@ const EnrolmentForm = (props) => {
     const handleSubmit = (event) => {
         setMessage(`Welcome ${firstName} ${lastName}`);
         props.setUpdatedSeats(props.currentSeats-1);
-        setFirstName(" ");
-        setLastName(" ");
         event.preventDefault();
     }
 
@@ -21,7 +19,7 @@ const EnrolmentForm = (props) => {
         <h1> {props.chosenProgram} Student Details</h1>
         <div>
             <label htmlFor="firstName">First Name:</label>
-            <input type="text" onBlur ={(event) =>
+            <input type="text" name="firstName" onBlur ={(event) =>
                 setFirstName(event.target.value)
             } />
         </div>

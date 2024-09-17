@@ -11,6 +11,8 @@ function App() {
 
   const handleChange = (event) =>{
     setProgram(event.target.value);
+    setPSeats(Pseats);
+    setUSeats(Useats);
   };
 
   const setUpdatedSeats = (updatedSeats) => {
@@ -25,26 +27,39 @@ function App() {
   return (
     <div className="App">
      <div className="programs">
-      <div><label>Remaining UG Setas - {Useats}</label></div>
-      <div><label>Remaining PG Setas - {Pseats}</label></div>
-      <br/>
-      <br/>
-      <label >Choose Program:</label>
-      <select
-        className="appDropDowns"
-        onChange={handleChange}
-        value={program}
-      >
-        <option value="UG">Undergraduate</option>
-        <option value="PG">Postgraduate</option>
-      </select>
-     </div>
+      <h3 className="title">Student Enrolment Forms</h3>
+      <ul className="ulEnrol">
+
+        <li className='parentLabels' onChange={handleChange}>
+
+          <input
+            type="radio"
+            value="UG"
+            name="programGroup"
+            defaultChecked
+          />
+          Undergraduate
+          <input type="radio" 
+          value="PG" 
+          name="programGroup"
+          />
+          Postgraduate
+        </li>
+          <li>
+            <label className="parentLabels">
+              Remaining {program} Seats - {program === "UG" ? Useats
+              : Pseats}
+            </label>
+          </li>
+      </ul>
+      
 
      <EnrolmentForm
         chosenProgram ={program}
         setUpdatedSeats={setUpdatedSeats}
         currentSeats={program === "UG" ? Useats : Pseats}
      />
+     </div>
     </div>
   )
 }
